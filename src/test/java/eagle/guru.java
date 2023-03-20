@@ -1,5 +1,7 @@
 package eagle;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -68,6 +70,21 @@ public void login() throws InterruptedException {
     Thread.sleep(2000);
     driver.findElement(By.name("submit")).click();
     System.out.println("Thank you for Regestering");
+    
+    List<WebElement> k = driver.findElements(By.tagName("a"));
+	System.out.println(k.size());
+    for(int i =0;i<k.size();i++) {
+	//System.out.println(k.get(i).getText());
+	//System.out.println(k.get(i).getAttribute("href"));
+	String workinglink = k.get(i).getAttribute("href");
+	String notworking = "https://demo.guru99.com/test/newtours/support.php";
+	if(workinglink.equals(notworking)) {
+		System.out.println("links are under construction" + k.get(i).getText());
+	}
+	else {
+		System.out.println("links are working" + k.get(i).getText());
+	}
+    }
 }
     @Test
     public void signoff() throws InterruptedException {
